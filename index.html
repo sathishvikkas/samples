@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8" />
+  <title>AngularJS Plunker</title>
+  <link data-require="bootstrap-css@*" data-semver="3.0.3" rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" />
+  <link data-require="font-awesome@*" data-semver="4.0.3" rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css" />
+  <script>
+    document.write('<base href="' + document.location + '" />');
+  </script>
+  <link rel="stylesheet" href="style.css" />
+  <script data-require="angular.js@1.2.x" src="http://code.angularjs.org/1.2.9/angular.js" data-semver="1.2.9"></script>
+  <script src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.11.2.min.js"></script>
+  <script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.min.js"></script>
+  <script src="app.js"></script>
+</head>
+
+<body ng-controller="Accordion">
+
+<h3>Angular  + Bootstrap Accordion</h3>
+
+  <accordion close-others="true" ng-init="customersAccordionActive=$state.includes('customers');ordersAccordionActive= $state.includes('orders');settingsAccordionActive=$state.includes('settings')">
+
+	<accordion-group is-open="customersAccordionActive" ui-sref="customers">
+	  <accordion-heading>
+		Customers <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': customersAccordionActive, 'glyphicon-chevron-right': !status.open}"></i>
+	  </accordion-heading>
+	   <div ui-view="customersView"></div>
+	</accordion-group>
+	
+	<accordion-group is-open="ordersAccordionActive" ui-sref="orders">
+	   <accordion-heading>
+		Orders <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': ordersAccordionActive, 'glyphicon-chevron-right': !status.open}"></i>
+	  </accordion-heading>
+	  <div ui-view="ordersView"></div>
+	</accordion-group>
+	
+	<accordion-group is-open="settingsAccordionActive" ui-sref="settings">
+	 <accordion-heading>
+		Settings <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down':settingsAccordionActive, 'glyphicon-chevron-right': !status.open}"></i>
+	  </accordion-heading>
+	  <div ui-view="settingsView"></div>				  
+	</accordion-group>
+	
+ </accordion>
+
+
+
+</body>
+
+</html>
